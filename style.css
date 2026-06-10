@@ -1,1 +1,587 @@
-/* Add your CSS here */
+/* ============================================================
+   INTEL SUSTAINABILITY TIMELINE — style.css
+   Palette:
+     --intel-blue:   #0068B5   (primary brand)
+     --intel-navy:   #003C71   (dark bg accents)
+     --intel-cyan:   #00AEEF   (accent / glow)
+     --page-bg:      #060C1A   (deep space navy)
+     --card-bg:      #0D1B35   (card base)
+     --card-border:  #1A3560   (subtle border)
+     --text-primary: #E8F4FD
+     --text-muted:   #7FA8CC
+     --green-accent: #00C49A   (sustainability milestone)
+   ============================================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --intel-blue:    #0068B5;
+  --intel-navy:    #003C71;
+  --intel-cyan:    #00AEEF;
+  --page-bg:       #060C1A;
+  --card-bg:       #0D1B35;
+  --card-bg-hover: #102444;
+  --card-border:   #1A3560;
+  --text-primary:  #E8F4FD;
+  --text-muted:    #7FA8CC;
+  --green-accent:  #00C49A;
+  --card-width:    280px;
+  --card-height:   340px;
+  --track-y:       60px;
+  --radius:        12px;
+  --transition:    0.45s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--page-bg);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse 80% 70% at 50% 0%, #003C71 0%, #060C1A 70%);
+  overflow: hidden;
+  padding: 6rem 2rem 4rem;
+}
+
+/* subtle dot-grid overlay */
+.hero__grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(0, 174, 239, 0.12) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Logo */
+.hero__logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 104, 181, 0.2);
+  border: 1px solid rgba(0, 174, 239, 0.3);
+  border-radius: 10px;
+  padding: 0.6rem 1.2rem;
+  backdrop-filter: blur(8px);
+}
+
+.hero__logo {
+  width: 130px;
+  height: auto;
+}
+
+/* Title */
+.hero__title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.hero__title-accent {
+  color: var(--intel-cyan);
+  display: inline-block;
+}
+
+/* Subheading */
+.hero__sub {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: var(--text-muted);
+  max-width: 560px;
+  font-weight: 300;
+  line-height: 1.75;
+}
+
+/* Scroll hint */
+.hero__scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--intel-cyan);
+  opacity: 0.75;
+  margin-top: 1rem;
+  animation: bob 2s ease-in-out infinite;
+}
+
+.hero__scroll-hint svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--intel-cyan);
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateX(0); }
+  50%       { transform: translateX(6px); }
+}
+
+/* ============================================================
+   TIMELINE SECTION
+   ============================================================ */
+.timeline-section {
+  padding: 5rem 0 6rem;
+  position: relative;
+}
+
+.timeline-track-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* Horizontal scroll container */
+.timeline-cards {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0;
+  padding: calc(var(--track-y) + 32px) 5vw 3rem;
+  overflow-x: auto;
+  overflow-y: visible;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* Hide scrollbar but keep function */
+  scrollbar-width: thin;
+  scrollbar-color: var(--intel-blue) transparent;
+}
+
+.timeline-cards::-webkit-scrollbar {
+  height: 4px;
+}
+.timeline-cards::-webkit-scrollbar-track {
+  background: transparent;
+}
+.timeline-cards::-webkit-scrollbar-thumb {
+  background: var(--intel-blue);
+  border-radius: 2px;
+}
+
+/* The glowing horizontal track line */
+.timeline-track {
+  position: absolute;
+  top: calc(var(--track-y) + 16px);
+  left: 5vw;
+  right: 5vw;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.timeline-track__line {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--intel-navy) 5%,
+    var(--intel-blue) 30%,
+    var(--intel-cyan) 60%,
+    var(--green-accent) 90%,
+    transparent 100%
+  );
+  box-shadow: 0 0 12px 2px rgba(0, 174, 239, 0.35);
+}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.card {
+  position: relative;
+  flex: 0 0 var(--card-width);
+  width: var(--card-width);
+  height: var(--card-height);
+  scroll-snap-align: start;
+  /* perspective for 3D flip */
+  perspective: 1000px;
+  cursor: pointer;
+  outline: none;
+  /* space between cards */
+  margin-right: 28px;
+}
+
+.card:last-child {
+  margin-right: 0;
+}
+
+/* Dot on the track */
+.card__dot {
+  position: absolute;
+  top: calc(-1 * var(--track-y) - 16px + 8px); /* aligns to track line */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--intel-blue);
+  border: 2px solid var(--intel-cyan);
+  box-shadow: 0 0 8px 2px rgba(0, 174, 239, 0.5);
+  z-index: 10;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.card__dot--sustainability {
+  background: var(--green-accent);
+  border-color: var(--green-accent);
+  box-shadow: 0 0 10px 3px rgba(0, 196, 154, 0.5);
+}
+
+.card:hover .card__dot,
+.card:focus .card__dot {
+  transform: translateX(-50%) scale(1.5);
+  box-shadow: 0 0 18px 6px rgba(0, 174, 239, 0.7);
+}
+
+/* 3D flip container */
+.card__inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform var(--transition);
+  border-radius: var(--radius);
+}
+
+.card:hover .card__inner,
+.card:focus .card__inner {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back shared */
+.card__front,
+.card__back {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  gap: 0.6rem;
+}
+
+/* FRONT */
+.card__front {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.card__front.card__front--with-image {
+  background-image:
+    linear-gradient(rgba(6, 12, 26, 0.78), rgba(6, 12, 26, 0.78)),
+    var(--card-bg-image);
+  background-color: var(--card-bg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.card__front.card__front--with-image .card__year,
+.card__front.card__front--with-image .card__title,
+.card__front.card__front--with-image .card__teaser {
+  text-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+}
+
+/* glow on hover (card stays visible briefly before flip completes) */
+.card:hover .card__front {
+  border-color: var(--intel-cyan);
+}
+
+/* BACK */
+.card__back {
+  background: linear-gradient(135deg, var(--intel-navy) 0%, #001F45 100%);
+  border: 1px solid var(--intel-cyan);
+  box-shadow:
+    0 4px 32px rgba(0, 104, 181, 0.45),
+    inset 0 1px 0 rgba(0, 174, 239, 0.15);
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  padding-top: 2.2rem;
+  gap: 0.8rem;
+}
+
+.card--sustainability .card__back {
+  background: linear-gradient(135deg, #00382A 0%, #001A15 100%);
+  border-color: var(--green-accent);
+  box-shadow: 0 4px 32px rgba(0, 196, 154, 0.35);
+}
+
+/* Year badge */
+.card__year {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: 2.6rem;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--intel-cyan);
+  display: block;
+}
+
+.card__year--back {
+  font-size: 1.4rem;
+  color: rgba(0, 174, 239, 0.5);
+  margin-bottom: 0.2rem;
+}
+
+/* Card title */
+.card__title {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  line-height: 1.25;
+}
+
+.card__back .card__title {
+  color: var(--intel-cyan);
+  font-size: 1rem;
+}
+
+.card--sustainability .card__back .card__title {
+  color: var(--green-accent);
+}
+
+/* Teaser (front) */
+.card__teaser {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Detail text (back) */
+.card__detail {
+  font-size: 0.85rem;
+  color: #b8d4ee;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.card__detail strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* "Hover to learn more" label */
+.card__cta {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0, 174, 239, 0.4);
+  white-space: nowrap;
+  transition: opacity var(--transition);
+}
+
+/* sustainability latest pulse ring */
+.card--latest .card__dot::after {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px solid var(--green-accent);
+  animation: pulse 2.4s ease-out infinite;
+}
+
+@keyframes pulse {
+  0%   { opacity: 0.8; transform: scale(1); }
+  100% { opacity: 0;   transform: scale(2.2); }
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+  border-top: 1px solid var(--card-border);
+  padding: 1.5rem 2rem;
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.footer-tag {
+  color: var(--intel-cyan);
+  opacity: 0.7;
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE (stacked vertical timeline)
+   ============================================================ */
+@media (max-width: 768px) {
+
+  :root {
+    --card-width: 100%;
+    --card-height: auto;
+  }
+
+  .hero {
+    padding: 5rem 1.5rem 3rem;
+  }
+
+  /* Hide horizontal track on mobile */
+  .timeline-track {
+    display: none;
+  }
+
+  .timeline-cards {
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: visible;
+    overflow-y: visible;
+    padding: 1.5rem 1.2rem 3rem;
+    gap: 0;
+    scroll-snap-type: none;
+    /* draw a vertical line */
+    border-left: 2px solid var(--intel-navy);
+    margin-left: 2rem;
+  }
+
+  .card {
+    width: 100%;
+    height: auto;
+    min-height: 180px;
+    margin-right: 0;
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+    perspective: none;
+    /* disable 3d flip on mobile — show accordion-style instead */
+  }
+
+  /* On mobile: no 3D flip; show front only, back opens on click via JS-free CSS focus trick */
+  .card__inner {
+    transform-style: flat;
+    height: auto;
+    min-height: 180px;
+  }
+
+  .card:hover .card__inner,
+  .card:focus .card__inner {
+    transform: none;
+  }
+
+  .card__front,
+  .card__back {
+    position: relative;
+    backface-visibility: visible;
+    -webkit-backface-visibility: visible;
+    inset: auto;
+    border-radius: var(--radius);
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .card__back {
+    transform: none;
+    display: none;
+    margin-top: 0.75rem;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+
+  /* On mobile: focus/hover reveals back below front */
+  .card:hover .card__back,
+  .card:focus .card__back {
+    display: flex;
+  }
+
+  .card:hover .card__front,
+  .card:focus .card__front {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-color: transparent;
+  }
+
+  /* Reposition dot to left edge */
+  .card__dot {
+    top: 1.5rem;
+    left: -2.35rem;
+    transform: none;
+  }
+
+  .card:hover .card__dot,
+  .card:focus .card__dot {
+    transform: scale(1.4);
+  }
+
+  .card__year {
+    font-size: 2rem;
+  }
+
+  .card__cta {
+    position: static;
+    transform: none;
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  .card__back .card__year--back {
+    display: none;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero__scroll-hint {
+    animation: none;
+  }
+  .card--latest .card__dot::after {
+    animation: none;
+  }
+  .card__inner {
+    transition: none;
+  }
+  .card__dot {
+    transition: none;
+  }
+}
