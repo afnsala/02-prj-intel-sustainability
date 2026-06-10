@@ -311,7 +311,7 @@ body {
 
 .card__front.card__front--with-image {
   background-image:
-    linear-gradient(rgba(6, 12, 26, 0.78), rgba(6, 12, 26, 0.78)),
+    linear-gradient(rgba(6, 12, 26, 0.70), rgba(6, 12, 26, 0.70)),
     var(--card-bg-image);
   background-color: var(--card-bg);
   background-size: cover;
