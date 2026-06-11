@@ -56,7 +56,7 @@ body {
    ============================================================ */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -140,6 +140,13 @@ body {
   opacity: 0.75;
   margin-top: 1rem;
   animation: bob 2s ease-in-out infinite;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity var(--transition);
+}
+
+.hero__scroll-hint:hover {
+  opacity: 1;
 }
 
 .hero__scroll-hint svg {
