@@ -601,8 +601,194 @@ body {
 }
 
 /* ============================================================
-   FOOTER
+   NEWSLETTER SECTION
    ============================================================ */
+.newsletter-section {
+  padding: 5rem 0 6rem;
+  background: linear-gradient(180deg, #07101F 0%, #030F1E 100%);
+  border-top: 1px solid var(--card-border);
+}
+
+.newsletter-icon-wrap {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(0, 196, 154, 0.12);
+  border: 1px solid rgba(0, 196, 154, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  font-size: 1.6rem;
+  color: var(--green-accent);
+}
+
+.newsletter__heading {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.65rem;
+}
+
+.newsletter__sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto 2rem;
+}
+
+/* Form card */
+.newsletter-form {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem 2rem 1.75rem;
+  text-align: left;
+}
+
+/* Labels */
+.newsletter-form__label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.4rem;
+}
+
+.newsletter-form__required {
+  color: var(--green-accent);
+}
+
+/* Inputs */
+.newsletter-form__input.form-control {
+  background: #071528;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  padding: 0.6rem 0.9rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.newsletter-form__input.form-control::placeholder {
+  color: #3a5a78;
+}
+
+.newsletter-form__input.form-control:focus {
+  background: #071528;
+  border-color: var(--intel-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.15);
+  color: var(--text-primary);
+  outline: none;
+}
+
+/* Checkboxes */
+.newsletter-form__check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: #071528;
+  transition: border-color var(--transition), background var(--transition);
+  cursor: pointer;
+}
+
+.newsletter-form__check:hover {
+  border-color: rgba(0, 174, 239, 0.35);
+  background: rgba(0, 174, 239, 0.05);
+}
+
+.newsletter-form__checkbox.form-check-input {
+  width: 1rem;
+  height: 1rem;
+  background-color: #071528;
+  border: 1px solid #2a4a68;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin: 0;
+  cursor: pointer;
+  transition: background-color var(--transition), border-color var(--transition);
+}
+
+.newsletter-form__checkbox.form-check-input:checked {
+  background-color: var(--green-accent);
+  border-color: var(--green-accent);
+}
+
+.newsletter-form__checkbox.form-check-input:focus {
+  box-shadow: 0 0 0 3px rgba(0, 196, 154, 0.2);
+}
+
+.newsletter-form__check .form-check-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Submit button */
+.newsletter-form__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--intel-blue) 0%, #004f8a 100%);
+  border: 1px solid rgba(0, 174, 239, 0.4);
+  border-radius: 8px;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: background var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+
+.newsletter-form__submit:hover {
+  background: linear-gradient(135deg, #0079d0 0%, var(--intel-blue) 100%);
+  box-shadow: 0 4px 20px rgba(0, 104, 181, 0.45);
+  transform: translateY(-1px);
+}
+
+.newsletter-form__submit:active {
+  transform: translateY(0);
+}
+
+.newsletter-form__submit .bi-send {
+  font-size: 0.9rem;
+}
+
+/* Disclaimer */
+.newsletter-form__disclaimer {
+  font-size: 0.72rem;
+  color: #4d7a9e;
+  text-align: center;
+  margin-top: 0.9rem;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.newsletter-form__disclaimer a {
+  color: var(--intel-cyan);
+  text-decoration: none;
+}
+
+.newsletter-form__disclaimer a:hover {
+  text-decoration: underline;
+}
+
+
 .site-footer {
   background: #030810;
   border-top: 1px solid var(--card-border);

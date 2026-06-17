@@ -315,7 +315,116 @@
     </div>
   </section>
 
-  <!-- Site Footer -->
+  <!-- Newsletter Section -->
+  <section class="newsletter-section" aria-labelledby="newsletter-heading">
+    <div class="container-xl">
+      <div class="row justify-content-center">
+        <div class="col-12 col-lg-7 col-xl-6 text-center">
+
+          <div class="newsletter-icon-wrap" aria-hidden="true">
+            <i class="bi bi-envelope-open"></i>
+          </div>
+
+          <h2 class="newsletter__heading" id="newsletter-heading">Stay in the Loop</h2>
+          <p class="newsletter__sub">
+            Get Intel's latest sustainability news, reports, and milestones delivered straight to your inbox.
+          </p>
+
+          <form class="newsletter-form" novalidate aria-label="Newsletter signup">
+            <div class="row g-3">
+
+              <!-- Name -->
+              <div class="col-12 col-sm-6">
+                <label for="nl-name" class="newsletter-form__label">First Name</label>
+                <input
+                  type="text"
+                  id="nl-name"
+                  name="first_name"
+                  class="form-control newsletter-form__input"
+                  placeholder="Jane"
+                  autocomplete="given-name"
+                  required
+                />
+              </div>
+
+              <!-- Last Name -->
+              <div class="col-12 col-sm-6">
+                <label for="nl-lastname" class="newsletter-form__label">Last Name</label>
+                <input
+                  type="text"
+                  id="nl-lastname"
+                  name="last_name"
+                  class="form-control newsletter-form__input"
+                  placeholder="Doe"
+                  autocomplete="family-name"
+                />
+              </div>
+
+              <!-- Email -->
+              <div class="col-12">
+                <label for="nl-email" class="newsletter-form__label">Email Address <span class="newsletter-form__required" aria-hidden="true">*</span></label>
+                <input
+                  type="email"
+                  id="nl-email"
+                  name="email"
+                  class="form-control newsletter-form__input"
+                  placeholder="jane.doe@example.com"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+
+              <!-- Topic interests -->
+              <div class="col-12 text-start">
+                <p class="newsletter-form__label mb-2">Topics of Interest</p>
+                <div class="row g-2">
+                  <div class="col-12 col-sm-6">
+                    <div class="newsletter-form__check">
+                      <input class="form-check-input newsletter-form__checkbox" type="checkbox" id="nl-climate" name="topics" value="climate" checked />
+                      <label class="form-check-label" for="nl-climate">Climate &amp; Energy</label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <div class="newsletter-form__check">
+                      <input class="form-check-input newsletter-form__checkbox" type="checkbox" id="nl-water" name="topics" value="water" />
+                      <label class="form-check-label" for="nl-water">Water &amp; Waste</label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <div class="newsletter-form__check">
+                      <input class="form-check-input newsletter-form__checkbox" type="checkbox" id="nl-supply" name="topics" value="supply" />
+                      <label class="form-check-label" for="nl-supply">Supply Chain</label>
+                    </div>
+                  </div>
+                  <div class="col-12 col-sm-6">
+                    <div class="newsletter-form__check">
+                      <input class="form-check-input newsletter-form__checkbox" type="checkbox" id="nl-reports" name="topics" value="reports" />
+                      <label class="form-check-label" for="nl-reports">Annual Reports</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit -->
+              <div class="col-12 mt-2">
+                <button type="submit" class="newsletter-form__submit w-100">
+                  <i class="bi bi-send" aria-hidden="true"></i>
+                  Subscribe Now
+                </button>
+                <p class="newsletter-form__disclaimer">
+                  By subscribing you agree to Intel's <a href="#">Privacy Policy</a>. Unsubscribe at any time.
+                </p>
+              </div>
+
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <footer class="site-footer" aria-label="Site footer">
     <div class="container-xl">
 
