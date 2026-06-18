@@ -13,12 +13,16 @@
 </head>
 <body>
 
+  <!-- Skip to main content link for keyboard navigation -->
+  <a href="#timeline-section" class="skip-link">Skip to main content</a>
+
   <!-- Header / Hero Section -->
   <header class="hero">
     <div class="hero__inner">
       <div class="hero__logo-wrap">
         <!-- Intel wordmark SVG inline for full color control -->
-        <svg class="hero__logo" viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" aria-label="Intel Logo">
+        <svg class="hero__logo" viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Intel Logo">
+          <title>Intel</title>
           <rect width="120" height="48" fill="none"/>
           <!-- Intel "e" swoosh mark approximation -->
           <text x="4" y="36" font-family="Arial Black, sans-serif" font-weight="900" font-size="30" fill="#FFFFFF" letter-spacing="-1">intel</text>
@@ -31,12 +35,14 @@
         to innovation has shaped a more sustainable future for technology and our planet.
       </p>
       <a href="#timeline-section" class="hero__scroll-hint">
-        <span>Scroll to explore!</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <span>Scroll or press Enter to explore</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
     <div class="hero__grid-overlay" aria-hidden="true"></div>
   </header>
+
+  <main>
 
   <!-- Timeline Section -->
   <section class="timeline-section" id="timeline-section" aria-label="Sustainability Timeline">
@@ -55,7 +61,7 @@
               <span class="card__year">1968</span>
               <h2 class="card__title">Intel Founded</h2>
               <p class="card__teaser">The spark that started it all.</p>
-              <span class="card__cta" aria-hidden="true">Hover to learn more</span>
+              <span class="card__cta">Enter or Space to flip</span>
             </div>
             <div class="card__back">
               <span class="card__year card__year--back">1968</span>
@@ -77,7 +83,7 @@
               <span class="card__year">1971</span>
               <h2 class="card__title">First Microprocessor</h2>
               <p class="card__teaser">The chip that changed everything.</p>
-              <span class="card__cta" aria-hidden="true">Hover to learn more</span>
+              <span class="card__cta">Enter or Space to flip</span>
             </div>
             <div class="card__back">
               <span class="card__year card__year--back">1971</span>
@@ -99,7 +105,7 @@
               <span class="card__year">1978</span>
               <h2 class="card__title">8086 Processor</h2>
               <p class="card__teaser">Architecture that defined an era.</p>
-              <span class="card__cta" aria-hidden="true">Hover to learn more</span>
+              <span class="card__cta">Enter or Space to flip</span>
             </div>
             <div class="card__back">
               <span class="card__year card__year--back">1978</span>
@@ -120,7 +126,7 @@
               <span class="card__year">1985</span>
               <h2 class="card__title">386 Processor</h2>
               <p class="card__teaser">32-bit power arrives.</p>
-              <span class="card__cta" aria-hidden="true">Hover to learn more</span>
+              <span class="card__cta">Enter or Space to flip</span>
             </div>
             <div class="card__back">
               <span class="card__year card__year--back">1985</span>
@@ -142,7 +148,7 @@
               <span class="card__year">2006</span>
               <h2 class="card__title">Peak GHG Emissions</h2>
               <p class="card__teaser">The turning point for climate action.</p>
-              <span class="card__cta" aria-hidden="true">Hover to learn more</span>
+              <span class="card__cta">Enter or Space to flip</span>
             </div>
             <div class="card__back">
               <span class="card__year card__year--back">2006</span>
@@ -164,7 +170,7 @@
               <span class="card__year">2020</span>
               <h2 class="card__title">RISE Strategy</h2>
               <p class="card__teaser">A blueprint for responsible innovation.</p>
-              <span class="card__cta" aria-hidden="true">Hover to learn more</span>
+              <span class="card__cta">Enter or Space to flip</span>
             </div>
             <div class="card__back">
               <span class="card__year card__year--back">2020</span>
@@ -186,7 +192,7 @@
               <span class="card__year">2022</span>
               <h2 class="card__title">Net-Zero By 2040</h2>
               <p class="card__teaser">A landmark climate commitment.</p>
-              <span class="card__cta" aria-hidden="true">Hover to learn more</span>
+              <span class="card__cta">Enter or Space to flip</span>
             </div>
             <div class="card__back">
               <span class="card__year card__year--back">2022</span>
@@ -207,7 +213,7 @@
               <span class="card__year">2023</span>
               <h2 class="card__title">Renewable Electricity</h2>
               <p class="card__teaser">99% clean power worldwide.</p>
-              <span class="card__cta" aria-hidden="true">Hover to learn more</span>
+              <span class="card__cta">Enter or Space to flip</span>
             </div>
             <div class="card__back">
               <span class="card__year card__year--back">2023</span>
@@ -229,7 +235,7 @@
               <span class="card__year">2024</span>
               <h2 class="card__title">Sustainability Summit</h2>
               <p class="card__teaser">Industry unites for a greener future.</p>
-              <span class="card__cta" aria-hidden="true">Hover to learn more</span>
+              <span class="card__cta">Enter or Space to flip</span>
             </div>
             <div class="card__back">
               <span class="card__year card__year--back">2024</span>
@@ -344,6 +350,7 @@
                   placeholder="Jane"
                   autocomplete="given-name"
                   required
+                  aria-required="true"
                 />
               </div>
 
@@ -371,6 +378,7 @@
                   placeholder="jane.doe@example.com"
                   autocomplete="email"
                   required
+                  aria-required="true"
                 />
               </div>
 
@@ -434,7 +442,8 @@
         <!-- Brand / tagline -->
         <div class="col-12 col-md-4">
           <div class="footer__brand">
-            <svg class="footer__logo" viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" aria-label="Intel Logo">
+            <svg class="footer__logo" viewBox="0 0 120 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Intel Logo">
+              <title>Intel</title>
               <text x="4" y="36" font-family="Arial Black, sans-serif" font-weight="900" font-size="30" fill="#FFFFFF" letter-spacing="-1">intel</text>
               <circle cx="108" cy="28" r="7" fill="#00AEEF"/>
             </svg>
@@ -479,6 +488,8 @@
 
     </div>
   </footer>
+
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>

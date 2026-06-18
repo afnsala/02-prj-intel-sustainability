@@ -28,7 +28,7 @@
   --card-bg-hover: #102444;
   --card-border:   #1A3560;
   --text-primary:  #E8F4FD;
-  --text-muted:    #7FA8CC;
+  --text-muted:    #A8C8E1;
   --green-accent:  #00C49A;
   --card-width:    280px;
   --card-height:   340px;
@@ -49,6 +49,24 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+/* Skip to main content link — hidden by default, visible on focus */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--intel-blue);
+  color: white;
+  padding: 8px 12px;
+  text-decoration: none;
+  z-index: 100;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
 }
 
 /* ============================================================
@@ -147,6 +165,12 @@ body {
 
 .hero__scroll-hint:hover {
   opacity: 1;
+}
+
+.hero__scroll-hint:focus-visible {
+  outline: 2px solid var(--intel-cyan);
+  outline-offset: 4px;
+  border-radius: 6px;
 }
 
 .hero__scroll-hint svg {
@@ -287,6 +311,13 @@ body {
 .card:hover .card__inner,
 .card:focus .card__inner {
   transform: rotateY(180deg);
+}
+
+/* Focus visible indicator for keyboard navigation */
+.card:focus-visible {
+  outline: 2px solid var(--intel-cyan);
+  outline-offset: 2px;
+  border-radius: var(--radius);
 }
 
 /* Front & Back shared */
@@ -491,6 +522,11 @@ body {
   transform: translateY(-4px);
 }
 
+.pillar-card:focus-visible {
+  outline: 2px solid var(--intel-cyan);
+  outline-offset: 2px;
+}
+
 .pillar-card--featured {
   border-color: var(--green-accent);
   background: linear-gradient(160deg, #0D1B35 0%, #0A2219 100%);
@@ -600,6 +636,11 @@ body {
   transform: translateX(3px);
 }
 
+.pillar-card__link:focus-visible {
+  outline: 2px solid var(--intel-cyan);
+  outline-offset: 4px;
+}
+
 /* ============================================================
    NEWSLETTER SECTION
    ============================================================ */
@@ -688,6 +729,11 @@ body {
   outline: none;
 }
 
+.newsletter-form__input.form-control:focus-visible {
+  outline: 2px solid var(--intel-cyan);
+  outline-offset: 2px;
+}
+
 /* Checkboxes */
 .newsletter-form__check {
   display: flex;
@@ -725,6 +771,11 @@ body {
 
 .newsletter-form__checkbox.form-check-input:focus {
   box-shadow: 0 0 0 3px rgba(0, 196, 154, 0.2);
+}
+
+.newsletter-form__checkbox.form-check-input:focus-visible {
+  outline: 2px solid var(--intel-cyan);
+  outline-offset: 2px;
 }
 
 .newsletter-form__check .form-check-label {
@@ -765,6 +816,11 @@ body {
   transform: translateY(0);
 }
 
+.newsletter-form__submit:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
 .newsletter-form__submit .bi-send {
   font-size: 0.9rem;
 }
@@ -781,11 +837,15 @@ body {
 
 .newsletter-form__disclaimer a {
   color: var(--intel-cyan);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--intel-cyan);
+  text-underline-offset: 2px;
 }
 
 .newsletter-form__disclaimer a:hover {
   text-decoration: underline;
+  opacity: 0.9;
 }
 
 
@@ -851,6 +911,11 @@ body {
   background: rgba(0, 174, 239, 0.06);
 }
 
+.footer__nav-link:focus-visible {
+  outline: 2px solid var(--intel-cyan);
+  outline-offset: 2px;
+}
+
 /* Divider */
 .footer__divider {
   height: 1px;
@@ -889,6 +954,11 @@ body {
 
 .footer__legal-link:hover {
   color: var(--text-primary);
+}
+
+.footer__legal-link:focus-visible {
+  outline: 2px solid var(--intel-cyan);
+  outline-offset: 2px;
 }
 
 .footer__copyright {
@@ -1027,15 +1097,30 @@ body {
    REDUCED MOTION
    ============================================================ */
 @media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
   .hero__scroll-hint {
     animation: none;
   }
+
   .card--latest .card__dot::after {
     animation: none;
   }
+
   .card__inner {
     transition: none;
   }
+
   .card__dot {
     transition: none;
   }
