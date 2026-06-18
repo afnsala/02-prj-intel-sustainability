@@ -56,6 +56,7 @@ body {
   position: absolute;
   top: -40px;
   left: 0;
+  inset-inline-start: 0;
   background: var(--intel-blue);
   color: white;
   padding: 8px 12px;
@@ -157,6 +158,7 @@ body {
   color: var(--intel-cyan);
   opacity: 0.75;
   margin-top: 1rem;
+  --scroll-offset: 6px;
   animation: bob 2s ease-in-out infinite;
   text-decoration: none;
   cursor: pointer;
@@ -181,7 +183,15 @@ body {
 
 @keyframes bob {
   0%, 100% { transform: translateX(0); }
-  50%       { transform: translateX(6px); }
+  50%       { transform: translateX(var(--scroll-offset)); }
+}
+
+[dir="rtl"] .hero__scroll-hint {
+  --scroll-offset: -6px;
+}
+
+[dir="rtl"] .hero__scroll-hint svg {
+  transform: scaleX(-1);
 }
 
 /* ============================================================
@@ -228,8 +238,8 @@ body {
 .timeline-track {
   position: absolute;
   top: calc(var(--track-y) + 16px);
-  left: 5vw;
-  right: 5vw;
+  inset-inline-start: 5vw;
+  inset-inline-end: 5vw;
   z-index: 0;
   pointer-events: none;
 }
@@ -263,18 +273,18 @@ body {
   cursor: pointer;
   outline: none;
   /* space between cards */
-  margin-right: 28px;
+  margin-inline-end: 28px;
 }
 
 .card:last-child {
-  margin-right: 0;
+  margin-inline-end: 0;
 }
 
 /* Dot on the track */
 .card__dot {
   position: absolute;
   top: calc(-1 * var(--track-y) - 16px + 8px); /* aligns to track line */
-  left: 50%;
+  inset-inline-start: 50%;
   transform: translateX(-50%);
   width: 14px;
   height: 14px;
@@ -688,7 +698,7 @@ body {
   border: 1px solid var(--card-border);
   border-radius: 16px;
   padding: 2rem 2rem 1.75rem;
-  text-align: left;
+    text-align: start;
 }
 
 /* Labels */
@@ -941,7 +951,7 @@ body {
 .footer__legal-list li + li::before {
   content: '·';
   color: var(--card-border);
-  margin-right: 0.1rem;
+  margin-inline-end: 0.1rem;
 }
 
 .footer__legal-link {
@@ -1006,8 +1016,8 @@ body {
     gap: 0;
     scroll-snap-type: none;
     /* draw a vertical line */
-    border-left: 2px solid var(--intel-navy);
-    margin-left: 2rem;
+    border-inline-start: 2px solid var(--intel-navy);
+    margin-inline-start: 2rem;
   }
 
   .card {
@@ -1016,7 +1026,7 @@ body {
     min-height: 180px;
     margin-right: 0;
     margin-bottom: 2rem;
-    padding-left: 1.5rem;
+    padding-inline-start: 1.5rem;
     perspective: none;
     /* disable 3d flip on mobile — show accordion-style instead */
   }
@@ -1040,7 +1050,7 @@ body {
     -webkit-backface-visibility: visible;
     inset: auto;
     border-radius: var(--radius);
-    text-align: left;
+    text-align: start;
     align-items: flex-start;
   }
 
@@ -1068,7 +1078,7 @@ body {
   /* Reposition dot to left edge */
   .card__dot {
     top: 1.5rem;
-    left: -2.35rem;
+    inset-inline-start: -2.35rem;
     transform: none;
   }
 
@@ -1125,3 +1135,87 @@ body {
     transition: none;
   }
 }
+
+/*------------------------------------------
+  Responsive Grid Media Queries - 1280, 1024, 768, 480
+   1280-1024   - desktop (default grid)
+   1024-768    - tablet landscape
+   768-480     - tablet 
+   480-less    - phone landscape & smaller
+--------------------------------------------*/
+@media all and (min-width: 1024px) and (max-width: 1280px) { }
+ 
+@media all and (min-width: 768px) and (max-width: 1024px) { }
+ 
+@media all and (min-width: 480px) and (max-width: 768px) { }
+ 
+@media all and (max-width: 480px) { }
+ 
+/*------------------------------------------
+  Foundation Media Queries 
+   http://foundation.zurb.com/docs/media-queries.html
+--------------------------------------------*/
+ 
+/* Small screens - MOBILE */
+@media only screen { } /* Define mobile styles - Mobile First */
+ 
+@media only screen and (max-width: 40em) { } /* max-width 640px, mobile-only styles, use when QAing mobile issues */
+ 
+/* Medium screens - TABLET */
+@media only screen and (min-width: 40.063em) { } /* min-width 641px, medium screens */
+ 
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { } /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+ 
+/* Large screens - DESKTOP */
+@media only screen and (min-width: 64.063em) { } /* min-width 1025px, large screens */
+ 
+@media only screen and (min-width: 64.063em) and (max-width: 90em) { } /* min-width 1024px and max-width 1440px, use when QAing large screen-only issues */
+ 
+/* XLarge screens */
+@media only screen and (min-width: 90.063em) { } /* min-width 1441px, xlarge screens */
+ 
+@media only screen and (min-width: 90.063em) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+ 
+/* XXLarge screens */
+@media only screen and (min-width: 120.063em) { } /* min-width 1921px, xlarge screens */
+ 
+/*------------------------------------------*/
+ 
+ 
+ 
+/* Portrait */
+@media screen and (orientation:portrait) { /* Portrait styles here */ }
+/* Landscape */
+@media screen and (orientation:landscape) { /* Landscape styles here */ }
+ 
+ 
+/* CSS for iPhone, iPad, and Retina Displays */
+ 
+/* Non-Retina */
+@media screen and (-webkit-max-device-pixel-ratio: 1) {
+}
+ 
+/* Retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+only screen and (-o-min-device-pixel-ratio: 3/2),
+only screen and (min--moz-device-pixel-ratio: 1.5),
+only screen and (min-device-pixel-ratio: 1.5) {
+}
+ 
+/* iPhone Portrait */
+@media screen and (max-device-width: 480px) and (orientation:portrait) {
+} 
+ 
+/* iPhone Landscape */
+@media screen and (max-device-width: 480px) and (orientation:landscape) {
+}
+ 
+/* iPad Portrait */
+@media screen and (min-device-width: 481px) and (orientation:portrait) {
+}
+ 
+/* iPad Landscape */
+@media screen and (min-device-width: 481px) and (orientation:landscape) {
+}
+ 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
